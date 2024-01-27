@@ -11,7 +11,8 @@ fn main() {
     pub struct Game {
         name: String,
         game_num: u8,
-        player_is_win: bool,
+        right_answer: u32,
+        player_answer: u32,
     }
 
     impl Game {
@@ -31,7 +32,12 @@ fn main() {
             println!("Enter game number please:");
 
             match io::stdin().lock().lines().next().unwrap().unwrap().parse::<u8>() {
-                Ok(game_num) => Game { name, game_num, player_is_win: false },
+                Ok(game_num) => Game {
+                    name,
+                    game_num,
+                    right_answer: 0,
+                    player_answer: 0,
+                },
                 Err(_) => {
                     println!("Illegal game number! Bye!");
                     process::exit(1);
@@ -39,23 +45,36 @@ fn main() {
             }
         }
 
-        fn run_game_by_number(self) -> Game  {
-            let res: bool = match self.game_num {
+        fn run_game_by_number(name: &String, game_num: u8) -> Game  {
+            let res: (u32, u32) = match game_num {
                 2 => brain_calc(),
                 _ => {
-                    println!("Start game #{}", &self.game_num);
+                    println!("Start game #{}", game_num);
                     process::exit(1);
                 },
             };
             Game {
-                name: self.name,
-                game_num: self.game_num,
-                player_is_win: res,
+                name: String::from(name),
+                game_num,
+                right_answer: res.0,
+                player_answer: res.1,
             }
         }
     }
 
-    let g1 = Game::greeting();
-    let g2 = g1.run_game_by_number();
-    println!("{:?}", g2);
+    let init_game = Game::greeting();
+    let (name, game_num) = (init_game.name, init_game.game_num);
+    for _i in 1..=3 {
+        let game = Game::run_game_by_number(&name, game_num);
+        if game.right_answer == game.player_answer {
+            println!("Correct!");
+        } else {
+            println!("{} is wrong answer ;(. Correct answer was {} .", game.player_answer, game.right_answer);
+            println!("Let's try again, {}!", game.name);
+            break
+        }
+        if _i == 3 {
+            println!("Congratulations, {}!", game.name);
+        }
+    }
 }
