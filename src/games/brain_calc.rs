@@ -14,13 +14,10 @@ pub mod brain_calc {
         println!("What is the result of the expression?");
         println!("{color_bright_white}{style_bold}Question: {} {} {} ?{style_reset}{color_reset}", random_num1, oper_str, random_num2);
         println!("Your answer:");
-        let input = io::stdin().lock().lines().next().unwrap().unwrap().parse::<u32>();
+        let input = io::stdin().lock().lines().next().unwrap().unwrap().parse::<String>();
         match input {
-            Ok(input) => (right_answer.to_string(), input.to_string()),
-            Err(_) => {
-                println!("Illegal answer! Bye!");
-                process::exit(1);
-            },
+            Ok(input) => (right_answer.to_string(), input),
+            Err(_) => process::exit(1),
         }
     }
 

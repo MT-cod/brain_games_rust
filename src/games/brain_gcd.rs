@@ -16,10 +16,7 @@ pub mod brain_gcd {
         let input = io::stdin().lock().lines().next().unwrap().unwrap().parse::<String>();
         match input {
             Ok(input) => (right_answer.to_string(), input),
-            Err(_) => {
-                println!("Illegal answer! Bye!");
-                process::exit(1);
-            },
+            Err(_) => process::exit(1),
         }
     }
 
@@ -31,12 +28,5 @@ pub mod brain_gcd {
             num2 = trans_num1 % trans_num2;
         }
         num2
-
-
-        /*if num1 % num2 != 0 {
-            self(num2, num1 % num2);
-        } else {
-            num2.abs();
-        }*/
     }
 }

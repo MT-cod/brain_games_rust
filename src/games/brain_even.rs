@@ -14,10 +14,7 @@ pub mod brain_even {
         let input = io::stdin().lock().lines().next().unwrap().unwrap().parse::<String>();
         match input {
             Ok(input) => (right_answer, input),
-            Err(_) => {
-                println!("Illegal answer! Bye!");
-                process::exit(1);
-            },
+            Err(_) => process::exit(1),
         }
     }
 

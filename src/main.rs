@@ -45,7 +45,7 @@ fn main() {
                     player_answer: "".to_string(),
                 },
                 Err(_) => {
-                    println!("Illegal game number! Bye!");
+                    println!("{color_bright_red}Illegal input! Bye!{color_reset}");
                     process::exit(1);
                 },
             }
@@ -73,7 +73,7 @@ fn main() {
                 2 => brain_calc(),
                 3 => brain_gcd(),
                 _ => {
-                    println!("Start game #{}", game_num);
+                    println!("{color_bright_red}Illegal game number \"{}\"! Bye!{color_reset}", game_num);
                     process::exit(1);
                 },
             };
