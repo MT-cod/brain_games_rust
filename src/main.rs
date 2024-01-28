@@ -16,7 +16,7 @@ fn main() {
     }
 
     impl Game {
-        fn greeting() -> Game {
+        fn init() -> Game {
             println!("Welcome to the Brain games!\nMay I have your name?");
             let name = io::stdin().lock().lines().next().unwrap().unwrap();
 
@@ -45,6 +45,22 @@ fn main() {
             }
         }
 
+        fn run(self) {
+            for _i in 1..=3 {
+                let game = Game::run_game_by_number(&self.name, self.game_num);
+                if game.right_answer == game.player_answer {
+                    println!("Correct!");
+                } else {
+                    println!("{} is wrong answer ;(. Correct answer was {} .", game.player_answer, game.right_answer);
+                    println!("Let's try again, {}!", game.name);
+                    break
+                }
+                if _i == 3 {
+                    println!("Congratulations, {}!", game.name);
+                }
+            }
+        }
+
         fn run_game_by_number(name: &String, game_num: u8) -> Game  {
             let res: (u32, u32) = match game_num {
                 2 => brain_calc(),
@@ -62,19 +78,5 @@ fn main() {
         }
     }
 
-    let init_game = Game::greeting();
-    let (name, game_num) = (init_game.name, init_game.game_num);
-    for _i in 1..=3 {
-        let game = Game::run_game_by_number(&name, game_num);
-        if game.right_answer == game.player_answer {
-            println!("Correct!");
-        } else {
-            println!("{} is wrong answer ;(. Correct answer was {} .", game.player_answer, game.right_answer);
-            println!("Let's try again, {}!", game.name);
-            break
-        }
-        if _i == 3 {
-            println!("Congratulations, {}!", game.name);
-        }
-    }
+    Game::init().run();
 }
