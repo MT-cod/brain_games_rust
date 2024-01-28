@@ -1,18 +1,20 @@
 mod games{
     pub mod brain_calc;
+    pub mod brain_even;
 }
 
 use std::io::{self, BufRead};
 use std::process;
 use crate::games::brain_calc::brain_calc::brain_calc;
+use crate::games::brain_even::brain_even::brain_even;
 
 fn main() {
     #[derive(Debug)]
     pub struct Game {
         name: String,
         game_num: u8,
-        right_answer: u32,
-        player_answer: u32,
+        right_answer: String,
+        player_answer: String,
     }
 
     impl Game {
@@ -35,8 +37,8 @@ fn main() {
                 Ok(game_num) => Game {
                     name,
                     game_num,
-                    right_answer: 0,
-                    player_answer: 0,
+                    right_answer: "".to_string(),
+                    player_answer: "".to_string(),
                 },
                 Err(_) => {
                     println!("Illegal game number! Bye!");
@@ -51,7 +53,7 @@ fn main() {
                 if game.right_answer == game.player_answer {
                     println!("Correct!");
                 } else {
-                    println!("{} is wrong answer ;(. Correct answer was {} .", game.player_answer, game.right_answer);
+                    println!("\"{}\" is wrong answer ;(. Correct answer was \"{}\".", game.player_answer, game.right_answer);
                     println!("Let's try again, {}!", game.name);
                     break
                 }
@@ -62,7 +64,8 @@ fn main() {
         }
 
         fn run_game_by_number(name: &String, game_num: u8) -> Game  {
-            let res: (u32, u32) = match game_num {
+            let res: (String, String) = match game_num {
+                1 => brain_even(),
                 2 => brain_calc(),
                 _ => {
                     println!("Start game #{}", game_num);
