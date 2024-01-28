@@ -5,7 +5,6 @@ mod games{
 }
 pub mod common_funcs;
 
-
 use std::io::{self, BufRead};
 use std::process;
 use inline_colorization::*;#[allow(unused_imports)]
