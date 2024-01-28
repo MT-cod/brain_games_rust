@@ -1,13 +1,16 @@
 mod games{
     pub mod brain_calc;
     pub mod brain_even;
+    pub mod brain_gcd;
 }
+pub mod common_funcs;
 
 use std::io::{self, BufRead};
 use std::process;
 use inline_colorization::*;
 use crate::games::brain_calc::brain_calc::brain_calc;
 use crate::games::brain_even::brain_even::brain_even;
+use crate::games::brain_gcd::brain_gcd::brain_gcd;
 
 fn main() {
     #[derive(Debug)]
@@ -68,6 +71,7 @@ fn main() {
             let res: (String, String) = match game_num {
                 1 => brain_even(),
                 2 => brain_calc(),
+                3 => brain_gcd(),
                 _ => {
                     println!("Start game #{}", game_num);
                     process::exit(1);

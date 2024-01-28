@@ -3,6 +3,7 @@ pub mod brain_calc {
     use std::io::BufRead;
     use rand::Rng;
     use inline_colorization::*;
+    use crate::common_funcs::common_funcs::get_rand_num;
 
     pub fn brain_calc() -> (String, String) {
         let random_num1 = get_rand_num();
@@ -21,11 +22,6 @@ pub mod brain_calc {
                 process::exit(1);
             },
         }
-    }
-
-    pub fn get_rand_num() -> u32 {
-        let mut rng = rand::thread_rng();
-        rng.gen_range(1..=100)
     }
 
     pub fn get_rand_calc_operation() -> (u8, char) {

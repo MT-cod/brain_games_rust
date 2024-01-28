@@ -1,8 +1,8 @@
 pub mod brain_even {
     use std::{io, process};
     use std::io::BufRead;
-    use rand::Rng;
     use inline_colorization::*;
+    use crate::common_funcs::common_funcs::get_rand_num;
 
     pub fn brain_even() -> (String, String) {
 
@@ -19,11 +19,6 @@ pub mod brain_even {
                 process::exit(1);
             },
         }
-    }
-
-    pub fn get_rand_num() -> u32 {
-        let mut rng = rand::thread_rng();
-        rng.gen_range(1..=100)
     }
 
     pub fn check_even(num: u32) -> String {
