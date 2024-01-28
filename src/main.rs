@@ -7,7 +7,7 @@ pub mod common_funcs;
 
 use std::io::{self, BufRead};
 use std::process;
-use inline_colorization::*;
+use inline_colorization::*;#[warn(unused_imports)]
 use crate::games::brain_calc::brain_calc::brain_calc;
 use crate::games::brain_even::brain_even::brain_even;
 use crate::games::brain_gcd::brain_gcd::brain_gcd;

@@ -1,7 +1,7 @@
 pub mod brain_gcd {
     use std::{io, process};
     use std::io::BufRead;
-    use inline_colorization::*;
+    use inline_colorization::*;#[warn(unused_imports)]
     use crate::common_funcs::common_funcs::get_rand_num;
 
     pub fn brain_gcd() -> (String, String) {

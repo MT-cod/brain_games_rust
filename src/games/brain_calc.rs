@@ -2,7 +2,7 @@ pub mod brain_calc {
     use std::{io, process};
     use std::io::BufRead;
     use rand::Rng;
-    use inline_colorization::*;
+    use inline_colorization::*;#[warn(unused_imports)]
     use crate::common_funcs::common_funcs::get_rand_num;
 
     pub fn brain_calc() -> (String, String) {
