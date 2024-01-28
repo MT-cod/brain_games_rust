@@ -5,6 +5,7 @@ mod games{
 
 use std::io::{self, BufRead};
 use std::process;
+use inline_colorization::*;
 use crate::games::brain_calc::brain_calc::brain_calc;
 use crate::games::brain_even::brain_even::brain_even;
 
@@ -19,18 +20,18 @@ fn main() {
 
     impl Game {
         fn init() -> Game {
-            println!("Welcome to the Brain games!\nMay I have your name?");
+            println!("{color_cyan}{style_bold}Welcome to the Brain games!{style_reset}{color_reset}\nMay I have your name?");
             let name = io::stdin().lock().lines().next().unwrap().unwrap();
 
             println!("Hello, {}!", name);
-            println!("\nList of available games:");
-            println!("-----------------------");
+            println!("{style_bold}{color_yellow}\nList of available games:");
+            println!("{color_bright_yellow}-----------------------");
             println!("1. Brain even");
             println!("2. Brain calc");
             println!("3. Brain GCD");
             println!("4. Brain progression");
             println!("5. Brain prime");
-            println!("-----------------------");
+            println!("-----------------------{style_reset}{color_reset}");
             println!("Enter game number please:");
 
             match io::stdin().lock().lines().next().unwrap().unwrap().parse::<u8>() {
@@ -51,14 +52,14 @@ fn main() {
             for _i in 1..=3 {
                 let game = Game::run_game_by_number(&self.name, self.game_num);
                 if game.right_answer == game.player_answer {
-                    println!("Correct!");
+                    println!("{color_cyan}Correct!{color_reset}");
                 } else {
-                    println!("\"{}\" is wrong answer ;(. Correct answer was \"{}\".", game.player_answer, game.right_answer);
+                    println!("{color_bright_red}\"{}\" is wrong answer ;(. Correct answer was \"{}\".{color_reset}", game.player_answer, game.right_answer);
                     println!("Let's try again, {}!", game.name);
                     break
                 }
                 if _i == 3 {
-                    println!("Congratulations, {}!", game.name);
+                    println!("{color_bright_cyan}{style_bold}Congratulations, {}!{color_reset}{style_reset}", game.name);
                 }
             }
         }

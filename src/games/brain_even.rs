@@ -2,13 +2,14 @@ pub mod brain_even {
     use std::{io, process};
     use std::io::BufRead;
     use rand::Rng;
+    use inline_colorization::*;
 
     pub fn brain_even() -> (String, String) {
 
         let random_num = get_rand_num();
         let right_answer = check_even(random_num);
 
-        println!("Answer \"yes\" if the number \"{}\" is even, otherwise answer \"no\".", random_num);
+        println!("{color_bright_white}{style_bold}Answer \"yes\" if the number \"{}\" is even, otherwise answer \"no\".{style_reset}{color_reset}", random_num);
         println!("Your answer:");
         let input = io::stdin().lock().lines().next().unwrap().unwrap().parse::<String>();
         match input {

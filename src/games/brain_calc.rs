@@ -2,6 +2,7 @@ pub mod brain_calc {
     use std::{io, process};
     use std::io::BufRead;
     use rand::Rng;
+    use inline_colorization::*;
 
     pub fn brain_calc() -> (String, String) {
         let random_num1 = get_rand_num();
@@ -10,7 +11,7 @@ pub mod brain_calc {
         let right_answer = calc_operation(random_num1, random_num2, oper_num);
 
         println!("What is the result of the expression?");
-        println!("Question: {} {} {} ?", random_num1, oper_str, random_num2);
+        println!("{color_bright_white}{style_bold}Question: {} {} {} ?{style_reset}{color_reset}", random_num1, oper_str, random_num2);
         println!("Your answer:");
         let input = io::stdin().lock().lines().next().unwrap().unwrap().parse::<u32>();
         match input {
