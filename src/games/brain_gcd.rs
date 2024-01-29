@@ -6,8 +6,8 @@ pub mod brain_gcd {
 
     pub fn brain_gcd() -> (String, String) {
 
-        let random_num1 = get_rand_num();
-        let random_num2 = get_rand_num();
+        let random_num1 = get_rand_num(100);
+        let random_num2 = get_rand_num(100);
         let right_answer = get_gcd(random_num1, random_num2);
 
         println!("{color_bright_white}{style_bold}Find the greatest common divisor of given numbers.{style_reset}{color_reset}");

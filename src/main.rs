@@ -2,6 +2,7 @@ mod games{
     pub mod brain_calc;
     pub mod brain_even;
     pub mod brain_gcd;
+    pub mod brain_progression;
 }
 pub mod common_funcs;
 
@@ -11,6 +12,7 @@ use inline_colorization::*;#[allow(unused_imports)]
 use crate::games::brain_calc::brain_calc::brain_calc;
 use crate::games::brain_even::brain_even::brain_even;
 use crate::games::brain_gcd::brain_gcd::brain_gcd;
+use crate::games::brain_progression::brain_progression::brain_progression;
 
 fn main() {
     #[derive(Debug)]
@@ -72,6 +74,7 @@ fn main() {
                 1 => brain_even(),
                 2 => brain_calc(),
                 3 => brain_gcd(),
+                4 => brain_progression(),
                 _ => {
                     println!("{color_bright_red}Illegal game number \"{}\"! Bye!{color_reset}", game_num);
                     process::exit(1);

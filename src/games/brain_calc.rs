@@ -6,8 +6,8 @@ pub mod brain_calc {
     use crate::common_funcs::common_funcs::get_rand_num;
 
     pub fn brain_calc() -> (String, String) {
-        let random_num1 = get_rand_num();
-        let random_num2 = get_rand_num();
+        let random_num1 = get_rand_num(100);
+        let random_num2 = get_rand_num(100);
         let (oper_num, oper_str): (u8, char) = get_rand_calc_operation();
         let right_answer = calc_operation(random_num1, random_num2, oper_num);
 

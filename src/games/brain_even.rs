@@ -6,7 +6,7 @@ pub mod brain_even {
 
     pub fn brain_even() -> (String, String) {
 
-        let random_num = get_rand_num();
+        let random_num = get_rand_num(100);
         let right_answer = check_even(random_num);
 
         println!("{color_bright_white}{style_bold}Answer \"yes\" if the number \"{}\" is even, otherwise answer \"no\".{style_reset}{color_reset}", random_num);
