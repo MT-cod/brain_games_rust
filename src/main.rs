@@ -1,20 +1,21 @@
-mod games{
+mod games {
     pub mod brain_calc;
     pub mod brain_even;
     pub mod brain_gcd;
-    pub mod brain_progression;
     pub mod brain_prime;
+    pub mod brain_progression;
 }
 pub mod common_funcs;
 
-use std::io::{self, BufRead};
-use std::process;
-use inline_colorization::*;#[allow(unused_imports)]
+#[allow(unused_imports)]
 use crate::games::brain_calc::brain_calc::brain_calc;
 use crate::games::brain_even::brain_even::brain_even;
 use crate::games::brain_gcd::brain_gcd::brain_gcd;
-use crate::games::brain_progression::brain_progression::brain_progression;
 use crate::games::brain_prime::brain_prime::brain_prime;
+use crate::games::brain_progression::brain_progression::brain_progression;
+use inline_colorization::*;
+use std::io::{self, BufRead};
+use std::process;
 
 fn main() {
     #[derive(Debug)]
@@ -41,7 +42,14 @@ fn main() {
             println!("-----------------------{style_reset}{color_reset}");
             println!("Enter game number please:");
 
-            match io::stdin().lock().lines().next().unwrap().unwrap().parse::<u8>() {
+            match io::stdin()
+                .lock()
+                .lines()
+                .next()
+                .unwrap()
+                .unwrap()
+                .parse::<u8>()
+            {
                 Ok(game_num) => Game {
                     name,
                     game_num,
@@ -51,7 +59,7 @@ fn main() {
                 Err(_) => {
                     println!("{color_bright_red}Illegal input! Bye!{color_reset}");
                     process::exit(1);
-                },
+                }
             }
         }
 
@@ -63,7 +71,7 @@ fn main() {
                 } else {
                     println!("{color_bright_red}\"{}\" is wrong answer ;(. Correct answer was \"{}\".{color_reset}", game.player_answer, game.right_answer);
                     println!("Let's try again, {}!", game.name);
-                    break
+                    break;
                 }
                 if _i == 3 {
                     println!("{color_bright_cyan}{style_bold}Congratulations, {}!{color_reset}{style_reset}", game.name);
@@ -71,7 +79,7 @@ fn main() {
             }
         }
 
-        fn run_game_by_number(name: &String, game_num: u8) -> Game  {
+        fn run_game_by_number(name: &String, game_num: u8) -> Game {
             let res: (String, String) = match game_num {
                 1 => brain_even(),
                 2 => brain_calc(),
@@ -79,9 +87,12 @@ fn main() {
                 4 => brain_progression(),
                 5 => brain_prime(),
                 _ => {
-                    println!("{color_bright_red}Illegal game number \"{}\"! Bye!{color_reset}", game_num);
+                    println!(
+                        "{color_bright_red}Illegal game number \"{}\"! Bye!{color_reset}",
+                        game_num
+                    );
                     process::exit(1);
-                },
+                }
             };
             Game {
                 name: String::from(name),

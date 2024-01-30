@@ -1,9 +1,10 @@
 pub mod brain_calc {
-    use std::{io, process};
-    use std::io::BufRead;
-    use rand::Rng;
-    use inline_colorization::*;#[allow(unused_imports)]
+    #[allow(unused_imports)]
     use crate::common_funcs::common_funcs::get_rand_num;
+    use inline_colorization::*;
+    use rand::Rng;
+    use std::io::BufRead;
+    use std::{io, process};
 
     pub fn brain_calc() -> (String, String) {
         let random_num1 = get_rand_num(100);
@@ -12,9 +13,18 @@ pub mod brain_calc {
         let right_answer = calc_operation(random_num1, random_num2, oper_num);
 
         println!("What is the result of the expression?");
-        println!("{color_bright_white}{style_bold}Question: {} {} {} ?{style_reset}{color_reset}", random_num1, oper_str, random_num2);
+        println!(
+            "{color_bright_white}{style_bold}Question: {} {} {} ?{style_reset}{color_reset}",
+            random_num1, oper_str, random_num2
+        );
         println!("Your answer:");
-        let input = io::stdin().lock().lines().next().unwrap().unwrap().parse::<String>();
+        let input = io::stdin()
+            .lock()
+            .lines()
+            .next()
+            .unwrap()
+            .unwrap()
+            .parse::<String>();
         match input {
             Ok(input) => (right_answer.to_string(), input),
             Err(_) => process::exit(1),
@@ -29,7 +39,7 @@ pub mod brain_calc {
             1 => (1, '+'),
             2 => (2, '-'),
             3 => (3, '*'),
-            _ => process::exit(1)
+            _ => process::exit(1),
         }
     }
 
@@ -38,7 +48,7 @@ pub mod brain_calc {
             1 => num1 + num2,
             2 => num1 - num2,
             3 => num1 * num2,
-            _ => process::exit(1)
+            _ => process::exit(1),
         }
     }
 }

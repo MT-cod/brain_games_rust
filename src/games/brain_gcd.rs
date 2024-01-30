@@ -1,19 +1,28 @@
 pub mod brain_gcd {
-    use std::{io, process};
-    use std::io::BufRead;
-    use inline_colorization::*;#[allow(unused_imports)]
+    #[allow(unused_imports)]
     use crate::common_funcs::common_funcs::get_rand_num;
+    use inline_colorization::*;
+    use std::io::BufRead;
+    use std::{io, process};
 
     pub fn brain_gcd() -> (String, String) {
-
         let random_num1 = get_rand_num(100);
         let random_num2 = get_rand_num(100);
         let right_answer = get_gcd(random_num1, random_num2);
 
         println!("{color_bright_white}{style_bold}Find the greatest common divisor of given numbers.{style_reset}{color_reset}");
-        println!("{color_bright_white}{style_bold}Question: \"{}\" and \"{}\"{style_reset}{color_reset}", random_num1, random_num2);
+        println!(
+            "{color_bright_white}{style_bold}Question: \"{}\" and \"{}\"{style_reset}{color_reset}",
+            random_num1, random_num2
+        );
         println!("Your answer:");
-        let input = io::stdin().lock().lines().next().unwrap().unwrap().parse::<String>();
+        let input = io::stdin()
+            .lock()
+            .lines()
+            .next()
+            .unwrap()
+            .unwrap()
+            .parse::<String>();
         match input {
             Ok(input) => (right_answer.to_string(), input),
             Err(_) => process::exit(1),
