@@ -3,6 +3,7 @@ mod games{
     pub mod brain_even;
     pub mod brain_gcd;
     pub mod brain_progression;
+    pub mod brain_prime;
 }
 pub mod common_funcs;
 
@@ -13,6 +14,7 @@ use crate::games::brain_calc::brain_calc::brain_calc;
 use crate::games::brain_even::brain_even::brain_even;
 use crate::games::brain_gcd::brain_gcd::brain_gcd;
 use crate::games::brain_progression::brain_progression::brain_progression;
+use crate::games::brain_prime::brain_prime::brain_prime;
 
 fn main() {
     #[derive(Debug)]
@@ -75,6 +77,7 @@ fn main() {
                 2 => brain_calc(),
                 3 => brain_gcd(),
                 4 => brain_progression(),
+                5 => brain_prime(),
                 _ => {
                     println!("{color_bright_red}Illegal game number \"{}\"! Bye!{color_reset}", game_num);
                     process::exit(1);
