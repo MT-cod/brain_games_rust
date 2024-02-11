@@ -2,7 +2,6 @@ pub mod brain_prime {
     #[allow(unused_imports)]
     use crate::common_funcs::common_funcs::get_rand_num;
     use inline_colorization::*;
-    use rand::Rng;
     use std::io::BufRead;
     use std::{io, process};
 
