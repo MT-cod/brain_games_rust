@@ -12,3 +12,10 @@ rand = { version = "0.8.5", features = [] }
 #[target.x86_64-pc-windows-gnu]
 #linker = "x86_64-w64-mingw32-gcc"
 #ar = "x86_64-w64-mingw32-ar"
+
+# Reduce the size of the executable  file:
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = "z"
+panic = 'abort'
